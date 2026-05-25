@@ -1,108 +1,280 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-background:#000;
-font-family:Arial;
-color:white;
-overflow-x:hidden;
-}
-
-header{
-background:#111;
-padding:15px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-border-bottom:1px solid #222;
-}
-
-.logo{
-font-size:26px;
-font-weight:bold;
-color:#00e5ff;
-}
-
-#searchInput{
-width:250px;
-padding:10px;
-border:none;
-background:#1a1a1a;
-border-radius:8px;
-color:white;
-}
-
-.main-container{
-display:flex;
-padding:15px;
-gap:15px;
-}
-
-.video-container{
-flex:3;
-}
-
-video{
-width:100%;
-height:75vh;
-background:black;
-border-radius:15px;
-}
-
-.channel-list{
-flex:1;
-height:75vh;
-overflow-y:auto;
-}
-
-.channel{
-background:#111;
-padding:10px;
-margin-bottom:10px;
-border-radius:10px;
-cursor:pointer;
-display:flex;
-align-items:center;
-gap:10px;
-transition:0.3s;
-}
-
-.channel:hover{
-background:#1d1d1d;
-transform:scale(1.02);
-}
-
-.channel img{
-width:70px;
-height:50px;
-object-fit:contain;
-background:black;
-border-radius:8px;
-}
-
-.channel span{
-font-size:14px;
-}
-
-@media(max-width:768px){
-
-.main-container{
-flex-direction:column;
-}
-
-video{
-height:250px;
-}
-
-.channel-list{
-height:auto;
-}
-
-#searchInput{
-width:150px;
-}
-
-}
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #0a0a0a;
+            font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
+            overflow-x: hidden;
+            color: #eee;
+        }
+        /* custom dark theme */
+        .tv-area {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        .embed-responsive {
+            position: relative;
+            background: #000;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.7);
+            border: 1px solid rgba(255,145,0,0.3);
+        }
+        .embed-responsive-16by9 {
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+        .embed-responsive-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        /* channel sidebar */
+        .channel-list {
+            background: #0f0f0f;
+            border-radius: 24px;
+            padding: 1rem 0.5rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            backdrop-filter: blur(2px);
+            height: 70vh;
+            overflow-y: auto;
+            border: 1px solid #262626;
+        }
+        .channel-list::-webkit-scrollbar {
+            width: 5px;
+        }
+        .channel-list::-webkit-scrollbar-track {
+            background: #1e1e1e;
+            border-radius: 10px;
+        }
+        .channel-list::-webkit-scrollbar-thumb {
+            background: #ff9100;
+            border-radius: 10px;
+        }
+        .thumbnail-slider {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .thumbnail-slider li {
+            background: #141414;
+            border-radius: 16px;
+            transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid #2a2a2a;
+            cursor: pointer;
+        }
+        .thumbnail-slider li:hover {
+            background: #202020;
+            border-color: #ff9100;
+            transform: translateX(4px);
+            box-shadow: 0 6px 12px rgba(255,145,0,0.15);
+        }
+        .thumbnail-slider li.active-channel {
+            background: linear-gradient(95deg, #1f2a1f, #121212);
+            border-left: 4px solid #ff9100;
+            border-left-width: 4px;
+            border-left-style: solid;
+            border-color: #ff9100;
+        }
+        .thumbnail-slider a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 10px 12px;
+            text-decoration: none;
+            color: #f1f1f1;
+            font-weight: 500;
+        }
+        .thumbnail-slider img {
+            width: 52px;
+            height: 52px;
+            object-fit: cover;
+            border-radius: 12px;
+            background: #2c2c2c;
+            border: 1px solid #3a3a3a;
+            transition: 0.2s;
+        }
+        .channel-name {
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            word-break: break-word;
+            flex: 1;
+        }
+        @media (max-width: 768px) {
+            .thumbnail-slider img {
+                width: 44px;
+                height: 44px;
+            }
+            .channel-name {
+                font-size: 0.75rem;
+            }
+            .channel-list {
+                height: 55vh;
+            }
+        }
+        /* marquee */
+        .marquee-container {
+            background: #0c0c0c;
+            border-top: 1px solid #2c2c2c;
+            border-bottom: 1px solid #2c2c2c;
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .notice-label {
+            background: #e34234;
+            color: white;
+            font-weight: 800;
+            padding: 4px 14px;
+            border-radius: 40px;
+            font-size: 12px;
+            margin-left: 15px;
+            margin-right: 15px;
+            white-space: nowrap;
+        }
+        marquee {
+            color: #ddd;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        /* premium footer */
+        .footer-premium {
+            background: #050505;
+            padding: 30px 0 25px;
+            margin-top: 40px;
+            border-top: 1px solid #222;
+        }
+        .tio-style-banner-fixed {
+            width: 100%;
+            max-width: 360px;
+            height: 65px;
+            background: url('https://png.pngtree.com/background/20250208/original/pngtree-smooth-gradient-chaotic-texture-in-abstract-dark-background-with-black-shade-picture-image_15219959.jpg') center/cover;
+            position: relative;
+            border-radius: 18px;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            border: 1px solid #ff910044;
+            box-shadow: 0 5px 12px black;
+        }
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(255,145,0,0.25) 100%);
+            z-index: 1;
+        }
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            padding: 0 15px;
+        }
+        .brand-logo-fixed {
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
+        .rs-live { color: white; }
+        .tv-text { color: #ff9100; text-shadow: 0 0 5px #ff9100; }
+        .text-section-fixed {
+            text-align: center;
+        }
+        .main-tags {
+            display: flex;
+            gap: 8px;
+            font-size: 8px;
+            font-weight: bold;
+        }
+        .tag-cricket { color: #ffd966; }
+        .tag-football { color: #6fcf97; }
+        .tag-tv { color: #5dade2; }
+        .sub-text {
+            font-size: 9px;
+            margin: 0;
+            font-weight: bold;
+            color: #ffddbb;
+        }
+        .live-circle {
+            background: #e02b2b;
+            border-radius: 40px;
+            padding: 5px 10px;
+            font-size: 10px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .pulse {
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            animation: pulseAnim 1.2s infinite;
+        }
+        @keyframes pulseAnim {
+            0% { opacity: 0.4; transform: scale(0.7);}
+            100% { opacity: 1; transform: scale(1.2);}
+        }
+        .tg-card {
+            background: #111;
+            border-radius: 28px;
+            padding: 18px;
+            text-align: center;
+            max-width: 360px;
+            margin: 25px auto 10px;
+            border: 1px solid #2e2e2e;
+        }
+        .telegram-btn {
+            background: #2aabee;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: bold;
+            text-decoration: none;
+            color: white !important;
+            transition: 0.2s;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .telegram-btn:hover {
+            background: #0088cc;
+            transform: scale(1.02);
+        }
+        .ad-box {
+            max-width: 320px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .copyright {
+            text-align: center;
+            font-size: 11px;
+            color: #5a5a5a;
+            padding: 10px;
+        }
+        h5 i, .badge {
+            margin-right: 6px;
+        }
+        .live-badge {
+            background: #ff4444;
+            animation: softPulse 1s infinite;
+        }
+        @keyframes softPulse {
+            0% { opacity: 0.8;}
+            100% { opacity: 1;}
+        }

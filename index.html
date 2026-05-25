@@ -15,27 +15,57 @@
 
 <header>
 
-<div class="logo">
-RS LIVE TV
+<div class="container-fluid tv-area py-3 px-2 px-md-4">
+    <div class="row g-4">
+        <!-- main video player -->
+        <div class="col-12 col-lg-8 tv-view">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe name="player" class="embed-responsive-item" allowfullscreen src="https://rs-player.netlify.app/jw-player?url=https://tvsen7.aynaott.com/tsports-hd/index.m3u8?e=1779508652&u=78be6644-0a65-48ec-81a4-089ac65a2619&token=47201c446d2e7b01b8b0736ba1240fbb"></iframe>
+            </div>
+        </div>
+        <!-- channel list sidebar -->
+        <div class="col-12 col-lg-4 channel-list">
+            <div class="d-flex justify-content-between align-items-center mb-3 px-2">
+                <h5 class="text-warning m-0"><i class="fas fa-broadcast-tower"></i> লাইভ চ্যানেল</h5>
+                <span class="badge bg-danger live-badge"><i class="fas fa-circle" style="font-size: 8px;"></i> LIVE</span>
+            </div>
+            <ul class="thumbnail-slider" id="channel-container"></ul>
+        </div>
+    </div>
 </div>
 
-<input type="text" id="searchInput" placeholder="Search Channel...">
-
-</header>
-
-<div class="main-container">
-
-<div class="video-container">
-
-<video id="video" controls autoplay playsinline></video>
-
+<!-- marquee notice -->
+<div class="marquee-container">
+    <div class="notice-label"><i class="fas fa-info-circle"></i> বিজ্ঞপ্তি</div>
+    <marquee scrollamount="5" onmouseover="this.stop()" onmouseout="this.start()">
+        ⚡ আপডেট চলছে, কিছু চ্যানেল প্লে হতে ৫-১০ সেকেন্ড সময় নিতে পারে। 💡 ফুলস্ক্রিন মোডে দেখলে বিজ্ঞাপন নেই! ধন্যবাদ — RS Live TV
+        <span style="color:#ffa500;"> 🏏 ক্রিকেট ⚽ ফুটবল 🎬 সিনেমা সব ফ্রিতে!</span>
+    </marquee>
 </div>
 
-<div class="channel-list" id="channelList">
+<!-- footer premium section -->
+<footer class="footer-premium">
+    <div class="container">
+        <div class="tio-style-banner-fixed">
+            <div class="banner-overlay"></div>
+            <div class="content-wrapper">
+                <div class="brand-logo-fixed">
+                    <span class="rs-live">RS Live</span>
+                    <span class="tv-text">TV</span>
+                </div>
+                <div class="text-section-fixed">
+                    <div class="main-tags">
+                        <span class="tag-cricket">CRICKET 🏏</span>
+                        <span class="tag-football">FOOTBALL ⚽</span>
+                        <span class="tag-tv">ENTERTAINMENT 📺</span>
+                    </div>
+                    <p class="sub-text">সর্বোচ্চ মানের ফ্রি স্ট্রিমিং</p>
+                </div>
+                <div class="live-circle"><span class="pulse"></span> লাইভ</div>
+            </div>
+        </div>
 
-</div>
-
-</div>
+     
 
 <script src="script.js"></script>
 
